@@ -21,7 +21,7 @@
 
 在 AiGame 根目录将 `appids.example.json` 复制为 `appids.local.json`，将 `apiUrl` 填为 `http://127.0.0.1:8000`，再执行 `node scripts/preview.js`。从首页选择普通、困难或极难，试玩后台在对应分类上架的关卡。
 
-微信、抖音真机使用 HTTPS 根地址，例如将 `appids.local.json` 的 `apiUrl` 改为 `https://game-api.example.com` 后执行 `node scripts/build.js` 和 `node scripts/check.js`。在宿主平台配置请求和图片所需的合法域名，并到官方真机验证。关卡和每日一瓷都由 API 提供，试玩前确保至少有一关已上架。
+微信、抖音真机使用 HTTPS 根地址，例如将 `appids.local.json` 的 `apiUrl` 改为 `https://game-api.example.com` 后执行 `node scripts/build.js` 和 `node scripts/check.js`。在宿主平台配置请求和图片所需的合法域名，并到官方真机验证。要为每日挑战供题，在「瓷器关卡」选择「每日一瓷」分类并上架。
 
 游戏按设备识别玩家，局内桌面保存在设备，通关提交服务端用于解锁和月榜。当前关游玩期间会提前请求下一关配置和图集。
 

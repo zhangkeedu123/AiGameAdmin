@@ -10,6 +10,7 @@ const categories = {
   normal: { label: '普通', color: 'green' },
   hard: { label: '困难', color: 'blue' },
   extreme: { label: '极难', color: 'volcano' },
+  daily: { label: '每日一瓷', color: 'gold' },
 };
 const categoryOptions = Object.entries(categories).map(([value, item]) => ({ value, label: item.label }));
 const shipment = {
@@ -216,7 +217,9 @@ function Levels() {
     { title: '操作', valueType: 'option', render: (_, row) => <Space>
       <Button type="link" onClick={() => setPreview(row)}>碎片预览</Button>
       <Button type="link" onClick={() => { setRegenerate(false); setReplacement(undefined); setEditing(row); }}>修改</Button>
-      {row.status !== 'published' && <Popconfirm title="上架后将在相应小游戏模式中显示" onConfirm={() => mutate(row, true)}>
+      {row.status !== 'published' && <Popconfirm
+        title={row.category === 'daily' ? '上架后进入每日一瓷轮换' : '上架后将在相应小游戏模式中显示'}
+        onConfirm={() => mutate(row, true)}>
         <Button type="link">{row.status === 'archived' ? '重新上架' : '上架'}</Button>
       </Popconfirm>}
       {row.status !== 'archived' && <Popconfirm title={row.status === 'draft' ? '删除草稿及贴图？' : '下架关卡，保留玩家历史？'} onConfirm={() => mutate(row, false)}><Button type="link" danger>{row.status === 'draft' ? '删除' : '下架'}</Button></Popconfirm>}
